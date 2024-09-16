@@ -1,0 +1,34 @@
+<section>
+  <div class="slides">
+    <div
+      class="slide animate__animated animate__fadeInLeft"
+      [ngStyle]="{
+        'background-image': 'url(' + slides[currentSlide].url + ')',
+      }"
+    >
+      @if (indicatorsVisible) {
+      <div id="indicators" class="imgShowcase" #imgShowcase>
+        @for(slide of slides; track $index; ){
+        <div
+          [attr.data-id]="$index + 1"
+          (click)="jumpToSlide($index)"
+          class="indicator"
+          [ngClass]="{ active: $index == currentSlide }"
+        ></div>
+        }
+      </div>
+      }
+
+      <button (click)="next()" class="nextButton" aria-label="Next slide">
+        <img src="assets/images/arrow-next-svgrepo-com.svg" alt="arrow-next" />
+      </button>
+      <button
+        (click)="previous()"
+        class="previousButton"
+        aria-label="Previous slide"
+      >
+        <img src="assets/images/arrow-prev-svgrepo-com.svg" alt="arrow-prev" />
+      </button>
+    </div>
+  </div>
+</section>
